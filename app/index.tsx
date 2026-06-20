@@ -13,12 +13,6 @@ export default function HomeScreen() {
        className="bg-blue-500 p-4 mt-4 rounded">
         <Text className="text-white text-center">Press Me 1</Text>
       </TouchableOpacity>
-
-       <TouchableOpacity
-      onPress={() => alert("Button Pressed!")}
-       className="bg-blue-500 p-4 mt-4 rounded">
-        <Text className="text-white text-center">Press Me 2</Text>
-      </TouchableOpacity>
      </View>
     </View>
   );
