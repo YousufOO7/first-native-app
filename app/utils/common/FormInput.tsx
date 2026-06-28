@@ -3,8 +3,8 @@ import { Text, TextInput, View } from "react-native";
 interface FormInputProps {
   label?: string;
   placeholder: string;
-  value?: string;
-  onChangeText?: (text: string) => void;
+  value: string;
+  onChangeText: (text: string) => void;
   error?: string;
   keyboardType?:
     | "default"
