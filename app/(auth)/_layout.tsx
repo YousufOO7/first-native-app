@@ -1,21 +1,36 @@
-import { useAuth } from '@clerk/expo';
-import { Redirect, Stack } from 'expo-router';
+// import { useAuth } from '@clerk/expo';
+// import { Redirect, Stack } from 'expo-router';
+// export default function AuthLayout() {
+
+//     const { isLoaded, isSignedIn } = useAuth();
+
+//     if(!isLoaded) {
+//         return null;
+//     }
+
+//     if(!isSignedIn) {
+//         return (
+//             <Redirect href="/sign-in" />
+//         );
+//     }
+
+//   return (
+//       <Stack screenOptions={{ headerShown: false }}>
+//       </Stack>
+//   );
+// }
+
+import { useAuth } from "@clerk/expo";
+import { Redirect, Stack } from "expo-router";
+
 export default function AuthLayout() {
+  const { isLoaded, isSignedIn } = useAuth();
 
-    const { isLoaded, isSignedIn } = useAuth();
+  if (!isLoaded) return null;
 
-    if(!isLoaded) {
-        return null;
-    }
+  if (isSignedIn) {
+    return <Redirect href="/(root)/(tabs)" />;
+  }
 
-    if(!isSignedIn) {
-        return (
-            <Redirect href="/sign-in" />
-        );
-    }
-
-  return (
-      <Stack screenOptions={{ headerShown: false }}>
-      </Stack>
-  );
+  return <Stack screenOptions={{ headerShown: false }} />;
 }
