@@ -1,18 +1,23 @@
 import { useAuth, useSignUp } from '@clerk/expo';
 import FormInput from 'app/utils/common/FormInput';
-import { Link, useRouter } from 'expo-router';
+import { Link } from 'expo-router';
 import { useState } from 'react';
 import { ActivityIndicator, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import OTPForm from './otp-form';
 
 export default function SignUp() {
   const { signUp, fetchStatus, errors } = useSignUp();
   const { isSignedIn } = useAuth();
-  const router = useRouter();
   const isLoading = fetchStatus === 'fetching';
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+
+  if (signUp.status === 'complete' || isSignedIn) {
+    return null;
+  }
 
 
   const onSignUpPress = async () => {
@@ -36,11 +41,8 @@ export default function SignUp() {
     signUp.missingFields.length === 0
   ) {
     return (
-      <View className="flex-1 justify-center items-center bg-white px-4">
-        <Text className="text-3xl font-bold">Check your email</Text>
-        <Text className="mt-4 text-lg font-semibold text-gray-700">
-          We&apos;ve sent a verification code to {email}. Please check your inbox and follow the instructions to verify your email address.
-        </Text>
+      <View className="flex-1 justify-center bg-white">
+       <OTPForm />
       </View>
     )
   }

@@ -10,7 +10,8 @@ interface FormInputProps {
     | "default"
     | "email-address"
     | "numeric"
-    | "phone-pad";
+    | "phone-pad"
+    | "number-pad";
   secureTextEntry?: boolean;
   textContentType?: any;
   autoCapitalize?: "none" | "sentences" | "words" | "characters";
