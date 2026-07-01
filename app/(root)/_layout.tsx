@@ -1,8 +1,11 @@
 import { useAuth } from "@clerk/expo";
 import { Redirect, Stack } from "expo-router";
+import { useUserSync } from "hooks/useUserSync";
 
 export default function RootLayout() {
   const { isLoaded, isSignedIn } = useAuth();
+
+  useUserSync();
 
   if (!isLoaded) return null;
 
