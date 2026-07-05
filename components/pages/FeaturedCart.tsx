@@ -10,7 +10,7 @@ export default function FeaturedCart({ property }: { property: Property }) {
     <TouchableOpacity
       className={`mr-2 w-72 overflow-hidden rounded-3xl bg-white opacity=${property?.is_sold ? '50' : '100'}`}
       onPress={() => router.push(`/root/property/${property?.id}`)}>
-      <Image source={{ uri: property?.images[0] }} className="h-44 w-full" resizeMode="cover" />
+      <Image source={{ uri: property?.images[0] || "https://via.placeholder.com/150" }} className="h-44 w-full" resizeMode="cover" />
 
       <View className="absolute left-3 top-3  rounded-3xl bg-white/90 px-3 py-1">
         <Text className="p-1 font-bold capitalize">{property?.type}</Text>
