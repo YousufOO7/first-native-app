@@ -1,6 +1,7 @@
 import { useUser } from "@clerk/expo";
 import { Ionicons } from "@expo/vector-icons";
 import { Property } from "app/utils/types/property";
+import FeaturedCart from "components/pages/FeaturedCart";
 import { useFocusEffect, useRouter } from "expo-router";
 import { supabase } from "lib/supabase";
 import { useCallback, useState } from "react";
@@ -95,15 +96,8 @@ export default function HomeScreen() {
                 keyExtractor={(item) => item.id}
                 horizontal
                 showsHorizontalScrollIndicator={false}
-                renderItem={({ item }) => (
-                  <View className="bg-white rounded-2xl mx-1 mb-6 p-1">
-                    <Text className="text-gray-900 text-base font-bold">
-                      {item.title}
-                    </Text>
-                  </View>
-                )}
+                renderItem={({ item }) => <FeaturedCart property={item} />}
                 >
-
                 </FlatList>
               )
             }
