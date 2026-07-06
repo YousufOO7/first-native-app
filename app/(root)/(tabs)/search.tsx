@@ -7,8 +7,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useFilterStore } from "store/filterStore";
 
 export default function SearchScreen() {
-  const [results, setResults] = useState<Property[]>([]);
-  const [loading, setLoading] = useState(false);
+  // const [results, setResults] = useState<Property[]>([]);
+  // const [loading, setLoading] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
 
   const {openFilters} = useLocalSearchParams<{openFilters?: string}>();
