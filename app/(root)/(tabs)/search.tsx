@@ -1,5 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Property } from "app/utils/types/property";
+import FilterModal from "components/modals/FilterModal";
 import { useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
@@ -66,7 +67,12 @@ export default function SearchScreen() {
           )}
         </TouchableOpacity>
       </View>
+      {/* filter clip */}
     </View>
+    {/* result */}
+
+    {/* filter modal */}
+     <FilterModal visible={showFilter} onClose={() => setShowFilter(false)} />
    </SafeAreaView>
   );
 }
