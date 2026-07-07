@@ -36,7 +36,7 @@ const chipText = (active: boolean) =>
 
 export default function FilterModal({visible, onClose}: {visible: boolean, onClose: () => void}) {
 
-    const {bedrooms, maxPrice,minPrice,search,type,setBedrooms,setMaxPrice,setMinPrice,setSearch,setType,resetFilters} = useFilterStore();
+    const {bedrooms, maxPrice,minPrice,type,setBedrooms,setMaxPrice,setMinPrice,setType,resetFilters} = useFilterStore();
      const [localMin, setLocalMin] = useState(minPrice ? String(minPrice) : "");
   const [localMax, setLocalMax] = useState(maxPrice ? String(maxPrice) : "");
 
