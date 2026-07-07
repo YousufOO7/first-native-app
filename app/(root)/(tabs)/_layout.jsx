@@ -17,16 +17,16 @@ export default function TabLayout() {
       />
 
       <Tabs.Screen
-        name="profile"
+        name="search"
         options={{
-          title: "Profile",
+          title: "Search",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="person" size={size} color={color} />
+            <Ionicons name="search" size={size} color={color} />
           ),
         }}
       />
 
-      {isAdmin && (
+       {isAdmin && (
         <Tabs.Screen
           name="admin"
           options={{
@@ -39,6 +39,18 @@ export default function TabLayout() {
       )}
 
       <Tabs.Screen
+        name="profile"
+        options={{
+          title: "Profile",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="person" size={size} color={color} />
+          ),
+        }}
+      />
+
+    
+
+      <Tabs.Screen
         name="saved"
         options={{
           title: "Saved",
@@ -48,15 +60,6 @@ export default function TabLayout() {
         }}
       />
 
-      <Tabs.Screen
-        name="search"
-        options={{
-          title: "Search",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="search" size={size} color={color} />
-          ),
-        }}
-      />
     </Tabs>
   );
 }
