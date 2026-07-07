@@ -46,7 +46,6 @@ export default function SearchScreen() {
 
   const fetchResults = async () => {
     setLoading(true);
-
     let query = supabase.from('properties').select('*');
 
     if (search) {
