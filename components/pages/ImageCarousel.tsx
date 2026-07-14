@@ -3,15 +3,13 @@ import { useState } from "react";
 import {
   Dimensions,
   FlatList,
-  Image,
   NativeScrollEvent,
   NativeSyntheticEvent,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import ImageViewing from "react-native-image-viewing";
+import ImageModal from "react-native-image-modal";
 
 const { width } = Dimensions.get("window");
 
@@ -33,7 +31,6 @@ export function ImageCarousel({
   isSold = false,
 }: ImageCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [imageViewerVisible, setImageViewerVisible] = useState(false);
 
   const onScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     const index = Math.round(e.nativeEvent.contentOffset.x / width);
@@ -46,20 +43,21 @@ export function ImageCarousel({
         <FlatList
           data={images}
           keyExtractor={(_, i) => i.toString()}
-          renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => setImageViewerVisible(true)}>
-              <Image
-                source={{ uri: item }}
-                style={{ width, height: 300 }}
-                resizeMode="cover"
-              />
-            </TouchableOpacity>
-          )}
           horizontal
           pagingEnabled
           showsHorizontalScrollIndicator={false}
           onScroll={onScroll}
           scrollEventThrottle={16}
+          renderItem={({ item }) => (
+            <ImageModal
+              source={{ uri: item }}
+              style={{
+                width,
+                height: 300,
+              }}
+              resizeMode="cover"
+            />
+          )}
         />
       </View>
 
@@ -85,7 +83,7 @@ export function ImageCarousel({
       )}
 
       {/* Back + Save buttons */}
-      <SafeAreaProvider className="absolute top-0 left-0 right-0">
+      <View className="absolute top-0 left-0 right-0">
         <View className="flex-row items-center justify-between px-4 pt-2">
           <TouchableOpacity
             onPress={onBack}
@@ -94,6 +92,7 @@ export function ImageCarousel({
           >
             <Ionicons name="arrow-back" size={20} color="#111827" />
           </TouchableOpacity>
+
           <TouchableOpacity
             onPress={onToggleSave}
             disabled={saveLoading}
@@ -107,15 +106,7 @@ export function ImageCarousel({
             />
           </TouchableOpacity>
         </View>
-      </SafeAreaProvider>
-
-      {/* Image Viewer Modal */}
-      <ImageViewing
-        images={images.map((uri) => ({ uri }))}
-        imageIndex={activeIndex}
-        visible={imageViewerVisible}
-        onRequestClose={() => setImageViewerVisible(false)}
-      />
+      </View>
     </View>
   );
 }
