@@ -13,8 +13,8 @@ import {
 } from "react-native";
 import { useUserStore } from "store/userStore";
 import { Property } from "app/utils/types/property";
-import { PropertyDetails } from "components/pages/PropertyDetails";
 import { ImageCarousel } from "components/pages/ImageCarousel";
+import { PropertyDetails } from "components/pages/PropertyDetails";
 
 export default function PropertyDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
