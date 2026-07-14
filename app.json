@@ -12,7 +12,8 @@
     "plugins": [
       "expo-router",
       "@clerk/expo",
-      "expo-secure-store"
+      "expo-secure-store",
+      "expo-font"
     ],
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -29,9 +30,16 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.yousuf.propertyapp",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "939fb9fa-c57e-47e8-bbf7-1a5574f8587f"
       }
     }
   }
